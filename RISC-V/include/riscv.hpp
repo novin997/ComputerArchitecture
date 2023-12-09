@@ -1,3 +1,6 @@
+#ifndef RISC_V_H
+#define RISC_V_H
+
 namespace RISCV
 {
     namespace Instruction
@@ -132,5 +135,8 @@ namespace RISCV
 
     class RISCV
     {
+    public:
     };
 };
+
+#endif

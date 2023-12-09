@@ -10,14 +10,25 @@ concept isIntegral = std::is_integral_v<T>;
 // template <class T>
 // concept isFloatingPoint = std::is_floating_point_v<T>;
 
-template <isIntegral T>
-class Timer
+class Itimer
 {
 public:
-    T ticks = 0;
-    T clockFrequency;
+    virtual void nextClockCycle() = 0;
+    // virtual ~Itimer() = default;
+};
 
-    Timer(T clockFrequency) : clockFrequency{clockFrequency}
+template <isIntegral T>
+class Timer : public Itimer
+{
+public:
+    T clockPeriod;
+
+    void nextClockCycle()
+    {
+        std::cout << "next clock cycle" << std::endl;
+    }
+
+    Timer(T clockPeriod) : clockPeriod{clockPeriod}
     {
     }
 
@@ -27,7 +38,7 @@ private:
 template <isIntegral T>
 inline std::ostream &operator<<(std::ostream &os, const Timer<T> &timer)
 {
-    os << timer.ticks << " " << timer.clockFrequency;
+    os << timer.count << " " << timer.clockPeriod;
     return os;
 };
 
