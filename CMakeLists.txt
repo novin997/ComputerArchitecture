@@ -8,7 +8,13 @@ set(CMAKE_CXX_STANDARD 20)
 
 # find_package(utilLib REQUIRED)
 add_subdirectory(Timer)
+add_subdirectory(Tomasulo)
+add_subdirectory(InstructionFetch)
 
 add_executable(ComputerArchitecture src/main.cpp)
 
-target_link_libraries(ComputerArchitecture PUBLIC Timer)
+target_link_libraries(ComputerArchitecture PUBLIC 
+    Timer 
+    Tomasulo
+    InstructionFetch
+)
